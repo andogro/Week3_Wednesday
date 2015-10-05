@@ -193,15 +193,22 @@ ohZero(string);
 //"omelet" → "omeletyay"
 //"are" → "areyay"
 
-
-
 var translate = " turn this string into pig latin";
-var pigOutput = " ";
+var pigOutput = translate.split(" ");
+console.log(pigOutput);
 function piglatin () {
-for (i=0; i<=translate.length; i++) {
-
+for (i=0; i<=pigOutput.length; i++) {
+switch (pigOutput[i].charAt(0)) {
+case 'a': case 'e': case 'i': case 'o': case 'u': case 'y'
+pigOutput = pigOutput + "yay";
+break;
+default:
+pigOutput = pigOutput + "ay";
+  }
+return pigOutput.join('');
+ }
 }
-}
+piglatin();
 
 // 12. Write a function that prints out the entire "99 Bottles of Beer on the Wall" song lyrics.
 var sing = " Bottles of Beer on the wall " ;

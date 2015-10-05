@@ -193,22 +193,32 @@ ohZero(string);
 //"omelet" → "omeletyay"
 //"are" → "areyay"
 
-var translate = " turn this string into pig latin";
-var pigOutput = translate.split(" ");
-console.log(pigOutput);
+var translate = "turn this string into another pig latin";
+var pigOut= translate.split(" ");
 function piglatin () {
-for (i=0; i<=pigOutput.length; i++) {
-switch (pigOutput[i].charAt(0)) {
-case 'a': case 'e': case 'i': case 'o': case 'u': case 'y'
-pigOutput = pigOutput + "yay";
-break;
-default:
-pigOutput = pigOutput + "ay";
-  }
-return pigOutput.join('');
+for (i=0; i<pigOut.length; i++) {
+if (pigOut[i].substring(0,1) == 'a'|| pigOut[i].substring(0,1) == 'e'
+|| pigOut[i].substring(0,1) == 'i' || pigOut[i].substring(0,1) == 'o'
+|| pigOut[i].substring(0,1) == 'u') {
+  pigOut[i] = (pigOut[i] + 'yay');
+}
+else if (pigOut[i].substring(0,1) != 'a'|| pigOut[i].substring(0,1) != 'e'
+|| pigOut[i].substring(0,1) != 'i' || pigOut[i].substring(0,1) != 'o'
+|| pigOut[i].substring(0,1) != 'u') {
+pigOut[i] = (pigOut[i].slice(1) + pigOut[i].slice(0,1) + 'ay');
+}
+else {
+console.log("What else could there be - need to figure out the 2 letter combo");
+     }
  }
+ console.log(pigOut.join(' '));
 }
 piglatin();
+
+
+//look at replace function rather than substraction
+
+
 
 // 12. Write a function that prints out the entire "99 Bottles of Beer on the Wall" song lyrics.
 var sing = " Bottles of Beer on the wall " ;

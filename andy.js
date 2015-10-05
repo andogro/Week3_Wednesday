@@ -140,21 +140,81 @@ countBs(string);
 // 9. Write a function called countChars() that behaves like countBs(), except it takes a
 //    second argument that indicates what character is to be counted.
 
+var charcount = prompt("What letter do you want to count?");
+var bcount = 0;
+var string = "fox jumped over a Dog";
+function countChars(b) {
+  for (i=0; i<b.length; i++) {
+    if (b.charAt(i) == charcount) {
+        bcount = bcount +1;
+    }
+  }
+    if (bcount == 1) {
+    console.log ("There is " +bcount+ " " +charcount+ " in your string");
+    }
+    else {
+    console.log("There are " +bcount+ " " +charcount+ "'s in your string");
+    }
+}
+countChars(string);
 
 
 // 10. Declare a function called ohZero() that replaces all of the o's in a string with 0's.
-      var string = "Soon you will master functions!";
+//Easy Way
+var string = "Soon you will master functions!";
+    var newstring = string.replace(/o/g, "0");
+    console.log(newstring);
 
+//Hard Way
 
+var string = "Soon you will master functions!";
+function ohZero(z) {
+  var newstring = z.split("");
+  for (i=0; i<z.length; i++) {
+      if (z[i] == "o") {
+        newstring[i] == "0";
+      }
+  }
+  newstring = newstring.join("");
+  console.log(newstring);
+};
+ohZero(string);
 
 // 11. Write function that translates a sentence into pig latin.
 //     https://en.wikipedia.org/wiki/Pig_Latin
 //     i.e. "look at my cool function" --> "ooklay atyay ymay oolcay unctionfay"
+//For words that begin with consonant sounds, the initial consonant or consonant cluster is moved to the end of the word, and "ay" (some people just add "a") is added, as in the following examples:
 
+//"pig" → "igpay"
+//"banana" → "ananabay"
+//"trash" → "ashtray"
+//For words which begin with vowel sounds or silent letter, one just adds "yay" to the end. Examples are:
+//"eat" → "eatyay"
+//"omelet" → "omeletyay"
+//"are" → "areyay"
+
+
+
+var translate = " turn this string into pig latin";
+var pigOutput = " ";
+function piglatin () {
+for (i=0; i<=translate.length; i++) {
+
+}
+}
 
 // 12. Write a function that prints out the entire "99 Bottles of Beer on the Wall" song lyrics.
+var sing = " Bottles of Beer on the wall " ;
+var end = " Bottle of Beer on the wall ";
 
-
+function beer() {
+  for (i=99, z=98; i>=3; i--, z--) {
+  console.log( i+ sing + i + " Bottles of Beer.  Take 1 down, pass it around, " + z + sing + "\n");
+  }
+  console.log( i+ sing + i + " Bottles of Beer.  Take 1 down, pass it around, " + z + end + "\n");
+  console.log( 1+ end + 1 + " Bottle of Beer.  Take 1 down, pass it around, " + 0 + sing);
+}
+beer();
 
 // 13. Create a 'Guessing Game'. The game starts by picking a random number.
 //    It then prompts the user to guess the number. If the user's number is lower/higher,
@@ -162,6 +222,21 @@ countBs(string);
 //    too high or too low. This continues until the correct guess is entered.
 //    When the correct guess is entered the user is given a success message with the correct number.
 
+var number = Math.floor((Math.random() * 100) + 1);
+var userNumber = prompt("Try to guess the computer's number between 1-100:");
+console.log(number);
+function numberGuess () {
+while (number != userNumber) {
+if (number > userNumber) {
+  userNumber = prompt("your number is too low, try again!");
+}
+else {
+  userNumber = prompt("your number is too high, try again!");
+}
+}
+alert("You nailed it!");
+}
+numberGuess();
 
 
 // 14. http://games.usvsth3m.com/javascript-under-pressure/
@@ -194,3 +269,32 @@ for (y=0; y<phoneTotal.length; y++) {            // new loop that figures out hi
 return "The largest phone number is ......." +largestPhoneNumber[indexNum];
 }
 phoneSum(largestPhoneNumber);
+
+
+//switch example
+
+function transform(text) {
+    var s = text.split('');
+    for (var i = 0; i < s.length; i++) {
+        // Caesar cipher
+        switch(s[i]) {
+          case ' ':
+            break;
+          case 'z':
+            s[i] = 'a';
+            break;
+          case 'Z':     // One case you forgot to handle
+            s[i] = 'A';
+            break;
+          default:
+            s[i] = String.fromCharCode(1 + s[i].charCodeAt(0));
+        }
+
+        // Upper-case vowels
+        switch(s[i]) {
+          case 'a': case 'e': case 'i': case 'o': case 'u':
+            s[i] = s[i].toUpperCase();
+        }
+    }
+    return s.join('');
+}
